@@ -1,0 +1,21 @@
+FROM centos:7
+
+WORKDIR /var/www/html
+
+RUN yum -y update \
+    && yum -y install curl httpd git make \
+    && curl --silent --location https://rpm.nodesource.com/setup_13.x | bash - \
+    && yum -y install nodejs
+
+COPY ./build/cliente/000-default-cliente.conf /etc/httpd/conf.d/000-default.conf
+
+COPY codigo-fonte/cliente/ /var/www/html/
+COPY build/cliente/build.sh /usr/local/bin/build.sh
+
+ENV TZ="America/Sao_Paulo"
+RUN date
+
+RUN chmod 777 -R /var/www/html/
+RUN chmod 777 -R /usr/local/bin/build.sh
+
+CMD [ "sh", "-c", "/usr/local/bin/build.sh ; httpd -DFOREGROUND" ]

@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.service.type: LoadBalancer
+    kompose.version: 1.22.0 (955b78124)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: cliente
+  name: cliente
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: cliente
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert
+        kompose.service.type: LoadBalancer
+        kompose.version: 1.22.0 (955b78124)
+      creationTimestamp: null
+      labels:
+        io.kompose.network/trilhamusical_trilhamusical-net: "true"
+        io.kompose.service: cliente
+    spec:
+      containers:
+        - args:
+            - sh
+            - -c
+            - npm install && npm run serve
+          image: gcr.io/lucid-arch-310121/trilhamusical-cliente
+          name: trilhamusical-cliente
+          ports:
+            - containerPort: 8080
+          resources: {}
+      restartPolicy: Always
+status: {}

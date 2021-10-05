@@ -1,0 +1,12 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: cliente-ingress
+  annotations:
+    kubernetes.io/ingress.global-static-ip-name: trilhamusical-endereco
+    networking.gke.io/managed-certificates: trilhamusical-certificado
+    kubernetes.io/ingress.class: "gce"
+spec:
+  backend:
+    serviceName: cliente
+    servicePort: 80

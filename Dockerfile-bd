@@ -1,0 +1,10 @@
+FROM postgres:10.0-alpine
+
+WORKDIR /etc/postgresql/
+
+USER postgres
+
+COPY /build/postgres/postgresql.conf /etc/postgresql/postgresql.conf
+COPY /build/postgres/pg_hba.conf /etc/postgresql/pg_hba.conf
+
+EXPOSE 5432
