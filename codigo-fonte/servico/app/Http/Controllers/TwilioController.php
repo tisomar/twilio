@@ -13,8 +13,8 @@ class TwilioController extends Controller
     {
         // Find your Account SID and Auth Token at twilio.com/console
 // and set the environment variables. See http://twil.io/secure
-        $sid = 'ACfb535593dd477de05645028d1ef47f53';
-        $token = '2fe000b103cc06c7abac2fafd81946e1';
+        $sid = '';
+        $token = '';
         $twilio = new Client($sid, $token);
         $twilio_number = "+13374920995";
 
