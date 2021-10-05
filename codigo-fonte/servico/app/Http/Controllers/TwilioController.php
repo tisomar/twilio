@@ -16,10 +16,10 @@ class TwilioController extends Controller
         $sid = '';
         $token = '';
         $twilio = new Client($sid, $token);
-        $twilio_number = "+13374920995";
+        $twilio_number = "+19999999999";
 
 //        $twilio->messages
-//            ->create("+5561985127199", // to
+//            ->create("+5561999999999", // to
 //                [
 //                    'from' => $twilio_number,
 //                    "body" => "Te amo, minha vida testwe!"
@@ -28,7 +28,7 @@ class TwilioController extends Controller
 
 
         $call = $twilio->calls
-            ->create("+5561985127199", // to
+            ->create("+5561999999999", // to
                 $twilio_number, // from
                 [
                     "twiml" => "<Response><Say>I love you my girl! </Say></Response>"
